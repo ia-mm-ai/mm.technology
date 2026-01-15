@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Step 3 — ZIVAI (Valid Transition Gate)</title>
+</head>
+<body>
+  <h1>Step 3 — ZIVAI</h1>
+  <p><strong>Name:</strong> Valid Transition Gate (Non-Fragmenting Live Field)</p>
+  <p><strong>Generated (UTC):</strong> &lt;UTC_ISO8601&gt;</p>
+
+  <h2>Constraints</h2>
+  <ul>
+    <li><strong>execution_power:</strong> NONE</li>
+    <li><strong>identity_power:</strong> NONE</li>
+    <li><strong>economic_power:</strong> NONE</li>
+    <li><strong>persistence:</strong> FORBIDDEN</li>
+    <li><strong>authority:</strong> ZERO</li>
+    <li><strong>scope:</strong> LIVE_FIELD_ONLY</li>
+  </ul>
+
+  <h2>What ZIVAI Is</h2>
+  <p>
+    ZIVAI signals live-field capacity within Live-Hold. It is admissible only while
+    <strong>EVENT.state = ⊙</strong>. It never decides, never executes, never persists, and never measures individuals.
+  </p>
+
+  <h3>Closed output set</h3>
+  <pre>LOW / MEDIUM / HIGH / SATURATED</pre>
+
+  <h2>Event frame</h2>
+  <pre>
+EVENT.state ∈ { 0, ⊙, 1 }
+ZIVAI admissible iff EVENT.state = ⊙
+  </pre>
+
+  <h2>Observed artifacts (this run)</h2>
+  <ul>
+    <li><strong>run_id:</strong> zivai-run-ZA-EXTRA-KRAJ-20251231</li>
+    <li><strong>event_id:</strong> ZA-EXTRA-KRAJ-paviljon-5-zagreb-HR</li>
+    <li><strong>ZIVAI state recorded:</strong> false</li>
+    <li><strong>Reason:</strong> ZIVAI persistence is forbidden; only Live-Hold reference is recorded.</li>
+  </ul>
+
+  <h2>Evidence (verbatim)</h2>
+  <pre>
+2025-12-31T11:16:56Z | EVENT=ZA-EXTRA-KRAJ-paviljon-5-zagreb-HR | PRESENCE=2025-12-31T11:15:00Z | LINEAGE=⊙ Live field HOLD — zivAI | VALIDATOR=ai-validator-v1
+2025-12-31T16:58:00Z | EVENT=ZA-EXTRA-KRAJ-paviljon-5-zagreb-HR | ACTION=FINALIZE | CONTEXT=event-concluded-live-field | LINEAGE=FINALIZE Event concluded as live field | VALIDATOR=human-governor
+  </pre>
+
+  <h2>Lineage consistency check</h2>
+  <ul>
+    <li><strong>single_event_scope:</strong> true</li>
+    <li><strong>single_linear_trail:</strong> true</li>
+    <li><strong>fragmentation_evidence:</strong> NONE_IN_ARTIFACTS</li>
+  </ul>
+
+  <h2>Pass condition (Step 3)</h2>
+  <p>
+    Step 3 is satisfied iff ZIVAI constraints are present and hash-pinned, ZIVAI remains live-only and non-persistent,
+    and the declared trail contains no fragmentation evidence or identity.
+  </p>
+
+  <h2>MMAI dependency (hash-pinned canon)</h2>
+  <p>
+    Canonical files are SHA-256 hash-pinned from the uploaded CAN-OFF-01 bundle (Step 1).
+  </p>
+</body>
+</html>
