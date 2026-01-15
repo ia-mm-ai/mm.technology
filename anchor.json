@@ -1,0 +1,118 @@
+{
+  "schema": "ZIVAI_STEP3_VALID_TRANSITION_GATE_v1",
+  "step": 3,
+  "name": "ZIVAI — Valid Transition Gate (Non-Fragmenting Live Field)",
+  "generated_utc": "<UTC_ISO8601>",
+
+  "constraints": {
+    "execution_power": "NONE",
+    "identity_power": "NONE",
+    "economic_power": "NONE",
+    "persistence": "FORBIDDEN",
+    "authority": "ZERO",
+    "scope": "LIVE_FIELD_ONLY"
+  },
+
+  "zivai": {
+    "canonical_question": "How much additional motion can this live field safely absorb right now?",
+    "scope_lock": "Applies only while EVENT.state = ⊙",
+    "operates_on": "aggregate_field_motion_only",
+    "must_not": [
+      "inspect_individuals",
+      "infer_identity",
+      "persist_state_beyond_event",
+      "emit_numeric_scores",
+      "decide_outcomes",
+      "force_resolution",
+      "create_truth",
+      "write_spiral"
+    ],
+    "output_closed_set": ["LOW", "MEDIUM", "HIGH", "SATURATED"],
+    "note_on_fragmentation": {
+      "principle": "ZIVAI must not enable multi-trajectory drift; it may only signal field capacity within Live-Hold.",
+      "enforcement": "ZIVAI provides signals only; validity of irreversible exits remains outside ZIVAI (IAM.MAI)."
+    }
+  },
+
+  "event_frame": {
+    "event_state_closed_set": ["0", "⊙", "1"],
+    "zivai_admissibility_rule": "ZIVAI is admissible iff EVENT.state = ⊙",
+    "prohibited": [
+      "ZIVAI_state_persisted_after_EVENT_close",
+      "ZIVAI_used_as_authority",
+      "ZIVAI_used_to_override_other_protocols"
+    ]
+  },
+
+  "run": {
+    "run_id": "zivai-run-ZA-EXTRA-KRAJ-20251231",
+    "event_id": "ZA-EXTRA-KRAJ-paviljon-5-zagreb-HR",
+
+    "observed_artifacts": {
+      "zivai_state_recorded": false,
+      "reason": "ZIVAI persistence is forbidden; only the existence of Live-Hold reference is recorded."
+    },
+
+    "lineage_consistency_check": {
+      "single_event_scope": true,
+      "single_linear_trail": true,
+      "fragmentation_evidence": "NONE_IN_ARTIFACTS"
+    }
+  },
+
+  "evidence": {
+    "sources": [
+      {
+        "source_id": "pop-ledger.log",
+        "format": "text-lines",
+        "lines_verbatim": [
+          "2025-12-31T11:16:56Z | EVENT=ZA-EXTRA-KRAJ-paviljon-5-zagreb-HR | PRESENCE=2025-12-31T11:15:00Z | LINEAGE=⊙ Live field HOLD — zivAI | VALIDATOR=ai-validator-v1",
+          "2025-12-31T16:58:00Z | EVENT=ZA-EXTRA-KRAJ-paviljon-5-zagreb-HR | ACTION=FINALIZE | CONTEXT=event-concluded-live-field | LINEAGE=FINALIZE Event concluded as live field | VALIDATOR=human-governor"
+        ]
+      }
+    ],
+    "claims_supported": [
+      "ZIVAI is referenced only as a Live-Hold field concept (not as persistent state).",
+      "A later FINALIZE exists as evidence of a coherent end-to-end trail for the same event scope.",
+      "No identity is present in the evidence lines."
+    ]
+  },
+
+  "mmai_dependency": {
+    "required": true,
+    "canonical_files_sha256": {
+      "ANCHOR.json": "d665eba4a1124bbcf5a0c6e6f8cf44cd2e55dab9ab969ae7423caf4c1a76782d",
+      "AXIS.prompt.yml": "83bc20d72f31dda31e68ff48337e93d10b57271569c6b688b8baddf4cf48acf0",
+      "CANON.md": "1b298116369af5233ba4c080cc1c03bbdac86d4b4daca2812dfd4d0b0db68045",
+      "LICENSE": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "README.md": "e92e2e9b8541b588a12ebbce471e3164eb219f6a14594fd8f62fb6f2a5cd0a80",
+
+      "protocol/00__CANON.md": "ab12a5ac7324b5f8dc5c243ece81ae7ac4f7a75b5962a30f4fc8ee92b5023f31",
+      "protocol/01__INDEX.md": "a4e55d395afc013cb55630184dcce34dceed0e07414a0eb51cac8c1753868442",
+      "protocol/02__BPL.md": "ffa59164e4ccbfb98db09dfdc76d834946890cd722595b4a0f3d84790d806c28",
+      "protocol/03__KENTRA_KERNEL.md": "3b6c73c22116ed30077603afd9aea3a49b9bdf39972d580cb024e99734b87368",
+      "protocol/04__PROPORTION.md": "7f7a00518fa11a46a4b723b6296a514a5fe729a69dc1a21619197d85c24b2365",
+      "protocol/05__EVENT.md": "45c8424903494440000456be36cc51312474c9e82878ecf0ad6867a2a5828c98",
+      "protocol/06__IAM_MAI.md": "9da243afe2e75d8f4aed8dd017e3cc8fd8d4c0550393f26091390a4ba9b0badf",
+      "protocol/07__BNK.md": "26f62cb04fad55c1e660b3bbb0662eccd36ef6eb5f6f960655118df692b2be9d",
+      "protocol/08__ZIVAI.md": "7861c7559b054a007551ac04864ca9000dadfc929fa4452bc66af4c3f40bec6d",
+      "protocol/09__22.md": "f9b4a83f1ac21923941f77045c016be97780fc79e1c1d2e5606d2c5e61d7a9aa",
+      "protocol/10__KAPIA.md": "812301f6a81c4cadb3f38b856ee470954c0f472ffa5809994141fd279f584f60",
+      "protocol/11__POP.md": "b0f9017749a1c8d5c29497de7e188774529117c7bb6222cc9e5ca8c8bb07dac6",
+      "protocol/12__SPIRAL.md": "4cc4fff2e9874d7ddd03c7566038bb49d2d6c879ba95124ed086926fb35026da",
+      "protocol/13__THIRD_SPACE.md": "f710c1eee94f5dda8e4eed5bcb132125993dd910fbdc0b5fab48e9d458af8a68",
+      "protocol/14__UPAD.md": "915d5000b8674c38129d895445a05859a734b4be03cb6fcca27f8d3b6e93b797",
+      "protocol/15__ISPAD.md": "a360cc0347507b5617417c291c04cb6b2cb42ceaa3c4c71099c353a21a366128"
+    }
+  },
+
+  "step_3_pass_condition": {
+    "requirement": "ZIVAI constraints are present and hash-pinned; ZIVAI remains live-only, aggregate-only, and non-persistent; no fragmentation evidence exists in the declared trail.",
+    "verification": [
+      "ZIVAI protocol is hash-pinned (protocol/08__ZIVAI.md)",
+      "Event state frame is declared (0/⊙/1)",
+      "Evidence shows Live-Hold reference without persisting ZIVAI output",
+      "Single event scope and linear trail asserted; no identity present"
+    ]
+  }
+}
